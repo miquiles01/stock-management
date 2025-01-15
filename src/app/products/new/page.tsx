@@ -13,7 +13,6 @@ const NewProductPage = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    // Se o campo for quantity ou price, converte para número, se possível.
     if (name === "quantity" || name === "price") {
       const numericValue = value === "" ? "" : parseFloat(value).toString();
       setProduct({ ...product, [name]: numericValue });

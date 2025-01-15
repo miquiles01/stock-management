@@ -10,7 +10,6 @@ const LoginPage = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simular login (substitua por lógica real depois)
     if (email && password) {
       router.push("/");
     } else {

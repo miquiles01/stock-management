@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router"; // Usando o useRouter para navegação
+import { useRouter } from "next/router"; 
 
 const EditProductPage = () => {
   const [product, setProduct] = useState<any>(null);
   const router = useRouter();
-  const { id } = router.query; // Pegando o ID da URL via router.query
+  const { id } = router.query; 
 
   useEffect(() => {
     if (id) {
@@ -25,7 +25,7 @@ const EditProductPage = () => {
         prod.id === id ? { ...prod, ...product } : prod
       );
       localStorage.setItem("products", JSON.stringify(updatedProducts));
-      router.push("/"); // Redireciona para a página principal após salvar
+      router.push("/"); 
     }
   };
 

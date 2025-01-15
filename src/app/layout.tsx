@@ -1,4 +1,4 @@
-import Link from "next/link"; // Importando o Link do Next.js
+import Link from "next/link"; 
 import "./styles/globals.css";
 
 export const metadata = {
