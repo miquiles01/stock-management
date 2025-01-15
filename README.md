@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 **Gestão de Estoque - Supermercado**
 
-## Getting Started
+Bem-vindo ao **Gestão de Estoque**! Este é um projeto desenvolvido com **Next.js**, pensado para facilitar o controle de produtos em um supermercado. Aqui, você pode cadastrar novos produtos no estoque de maneira rápida e eficiente, utilizando uma interface moderna e intuitiva. 🛍️
 
-First, run the development server:
+## 🌟 **Funcionalidades Principais**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Cadastro de Produtos:** Adicione produtos com informações como nome, quantidade, preço e categoria. 🏷️
+- **Formulário Dinâmico:** Campos automaticamente validados para garantir que os dados sejam inseridos corretamente. 🔒
+- **Armazenamento Local:** Os produtos cadastrados são armazenados no **localStorage**, garantindo persistência local. 💾
+- **Formulário Limpo:** Após o envio do formulário, ele é automaticamente resetado para um novo cadastro. 🧹
+- **Arquitetura Next.js:** Com renderização híbrida (SSR e CSR), garantindo alta performance e flexibilidade. 🚀
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 **Design e Cores**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O design foi pensado para transmitir simplicidade e funcionalidade, com um esquema de cores amigável e moderno.  
 
-## Learn More
+🎨 **Esquema de Cores:**
+- **Cor Primária:** `#E07A5F` (um tom de laranja aconchegante e acolhedor 🍊).
+- **Fundo:** `#F3F4F6` (um cinza claro que deixa o layout limpo e facilita a leitura 📖).
+- **Texto:** Tons de cinza escuro (`#4A5568` e `#2D3748`), garantindo boa legibilidade.
+- **Efeitos de Hover:** Tons de laranja mais escuro para os botões, destacando ações interativas. 🌟
 
-To learn more about Next.js, take a look at the following resources:
+Essas escolhas ajudam a criar uma interface visualmente agradável, leve e fácil de usar.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 **Tecnologias Utilizadas**
 
-## Deploy on Vercel
+- **Next.js:** Framework React para renderização server-side e client-side ⚛️.
+- **TypeScript:** Tipagem estática para maior segurança e produtividade no desenvolvimento 💻.
+- **Tailwind CSS:** Framework CSS utilitário para um design responsivo e estilizado rapidamente 📱.
+- **localStorage:** Persistência de dados simples e eficaz para ambientes locais. 💾
+- **Chart js:** Para a criação do dashboard
+- **Nest js:** Em breve para o backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![image](https://github.com/user-attachments/assets/9607bb46-2991-4da4-9ab4-ce05107c2630)
+
