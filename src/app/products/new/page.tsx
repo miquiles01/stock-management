@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const NewProductPage = () => {
   const [product, setProduct] = useState({
@@ -25,7 +27,15 @@ const NewProductPage = () => {
     e.preventDefault();
     saveToLocalStorage(product);
     console.log("Produto cadastrado:", product);
-    alert("Produto cadastrado com sucesso!");
+    toast.success("Produto cadastrado com sucesso!"); 
+    
+    // Limpando o formulário após o envio
+    setProduct({
+      name: "",
+      quantity: "",
+      price: "",
+      category: "",
+    });
   };
 
   const saveToLocalStorage = (newProduct: typeof product) => {
@@ -36,8 +46,8 @@ const NewProductPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start p-6">
-      <div className="w-full max-w-lg bg-white p-8 rounded-xl shadow-lg mt-10">
-        <h1 className="text-3xl font-bold text-center text-[#E07A5F] mb-6">Cadastrar Produto</h1>
+      <div className="w-full max-w-lg bg-white p-8 rounded-xl shadow-lg mt-20">
+        <h1 className="text-3xl font-bold text-center text-[#48754B] mb-6">Cadastrar Produto</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Nome do Produto</label>
@@ -89,12 +99,14 @@ const NewProductPage = () => {
 
           <button
             type="submit"
-            className="w-full bg-[#E07A5F] text-white py-3 rounded-lg text-lg font-semibold hover:bg-[#d36a4d] transition-all"
+            className="w-full bg-[#3F4B38] text-white py-3 rounded-lg text-lg font-semibold hover:bg-[#48754B] transition-all"
           >
             Cadastrar Produto
           </button>
         </form>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

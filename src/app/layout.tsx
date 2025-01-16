@@ -1,21 +1,23 @@
-import "./styles/globals.css";
-import Navbar from "./navbar/navbar"; 
+'use client';
 
-export const metadata = {
-  title: "Sistema de Estoque",
-  description: "Gerenciamento de estoque com Next.js",
-};
+import './styles/globals.css'; 
+import Navbar from './navbar/navbar'; 
+import Footer from './footer/page'; 
+import { usePathname } from 'next/navigation';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   return (
-    <html lang="pt-BR">
-      <body className="min-h-screen bg-gray-100">
-        <Navbar />
-        <main className="p-6">{children}</main>
+    <html lang="pt-br">
+      <head>
+      </head>
+      <body className="flex flex-col min-h-screen">
+        {pathname !== '/' && <Navbar />}
+        
+        <main className="flex-grow">{children}</main>
+        
+        {pathname !== '/' && <Footer />}
       </body>
     </html>
   );
