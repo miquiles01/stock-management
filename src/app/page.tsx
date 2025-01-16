@@ -3,18 +3,18 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false); 
+const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState<string>(""); 
+  const [password, setPassword] = useState<string>(""); 
+  const [isLoading, setIsLoading] = useState<boolean>(false); 
   const router = useRouter();
 
   const validEmail = "admin@gmail.com";
   const validPassword = "senha123";
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     if (!email || !password) {
       toast.error("Por favor, preencha todos os campos.");
       return false;
@@ -26,7 +26,7 @@ const LoginPage = () => {
     return true;
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     
     if (!validateForm()) {

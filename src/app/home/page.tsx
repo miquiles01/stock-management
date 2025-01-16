@@ -115,7 +115,11 @@ const Dashboard = () => {
         {cardsData.map((card, index) => (
           <div
             key={index}
-            className={`bg-[${card.bgColor}] text-[${card.textColor}] shadow-lg rounded-lg p-6 transform hover:scale-105 transition-all duration-300 ease-in-out flex flex-col items-center justify-center w-full sm:w-76 h-48`}
+            style={{
+              backgroundColor: card.bgColor,
+              color: card.textColor,
+            }}
+            className="shadow-lg rounded-lg p-6 transform hover:scale-105 transition-all duration-300 ease-in-out flex flex-col items-center justify-center w-full sm:w-76 h-48"
           >
             <div className="text-5xl mb-4">
               <i className={card.icon}></i>
