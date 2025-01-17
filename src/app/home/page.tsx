@@ -16,12 +16,20 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+type Product = {
+  name: string;
+  quantity: number;
+  sold: boolean;
+  price?: number;
+  category?: string;
+};
+
 const Dashboard = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]); 
 
   // Carregar os produtos do localStorage
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("products") || "[]");
+    const storedProducts: Product[] = JSON.parse(localStorage.getItem("products") || "[]");
     setProducts(storedProducts);
   }, []);
 
