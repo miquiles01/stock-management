@@ -3,17 +3,23 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+interface Product {
+  name: string;
+  quantity: number;
+  price: number;
+  category: string;
+}
+
 const ProductListPage = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("products") || "[]");
+    const storedProducts: Product[] = JSON.parse(localStorage.getItem("products") || "[]");
     setProducts(storedProducts);
   }, []);
 
   const handleEdit = (index: number) => {
-    const productToEdit = products[index];
     router.push(`/edit/${index}`);
   };
 
