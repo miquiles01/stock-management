@@ -25,25 +25,20 @@ const NewProductPage = ()=>{
     });
     const handleChange = (e)=>{
         const { name, value } = e.target;
-        if (name === "quantity" || name === "price") {
-            const numericValue = value === "" ? "" : parseFloat(value).toString();
-            setProduct({
-                ...product,
-                [name]: numericValue
-            });
-        } else {
-            setProduct({
-                ...product,
-                [name]: value
-            });
-        }
+        setProduct({
+            ...product,
+            [name]: value
+        });
     };
     const handleSubmit = (e)=>{
         e.preventDefault();
-        saveToLocalStorage(product);
-        console.log("Produto cadastrado:", product);
+        const formattedProduct = {
+            ...product,
+            quantity: parseInt(product.quantity, 10).toString(),
+            price: parseFloat(product.price).toFixed(2)
+        };
+        saveToLocalStorage(formattedProduct);
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Produto cadastrado com sucesso!");
-        // Limpando o formulário após o envio
         setProduct({
             name: "",
             quantity: "",
@@ -52,7 +47,14 @@ const NewProductPage = ()=>{
         });
     };
     const saveToLocalStorage = (newProduct)=>{
-        const existingProducts = JSON.parse(localStorage.getItem("products") || "[]");
+        const existingProducts = (()=>{
+            try {
+                const stored = localStorage.getItem("products");
+                return stored ? JSON.parse(stored) : [];
+            } catch  {
+                return [];
+            }
+        })();
         existingProducts.push(newProduct);
         localStorage.setItem("products", JSON.stringify(existingProducts));
     };
@@ -67,7 +69,7 @@ const NewProductPage = ()=>{
                         children: "Cadastrar Produto"
                     }, void 0, false, {
                         fileName: "[project]/src/app/products/new/page.tsx",
-                        lineNumber: 50,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -81,7 +83,7 @@ const NewProductPage = ()=>{
                                         children: "Nome do Produto"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 53,
+                                        lineNumber: 72,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -93,13 +95,13 @@ const NewProductPage = ()=>{
                                         placeholder: "Digite o nome do produto"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 54,
+                                        lineNumber: 73,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/products/new/page.tsx",
-                                lineNumber: 52,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -109,7 +111,7 @@ const NewProductPage = ()=>{
                                         children: "Quantidade"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 65,
+                                        lineNumber: 84,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -121,13 +123,13 @@ const NewProductPage = ()=>{
                                         placeholder: "Quantidade disponível"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 66,
+                                        lineNumber: 85,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/products/new/page.tsx",
-                                lineNumber: 64,
+                                lineNumber: 83,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -137,7 +139,7 @@ const NewProductPage = ()=>{
                                         children: "Preço"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 77,
+                                        lineNumber: 96,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -149,13 +151,13 @@ const NewProductPage = ()=>{
                                         placeholder: "Preço do produto"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 97,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/products/new/page.tsx",
-                                lineNumber: 76,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -165,7 +167,7 @@ const NewProductPage = ()=>{
                                         children: "Categoria"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 108,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -177,13 +179,13 @@ const NewProductPage = ()=>{
                                         placeholder: "Categoria do produto"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/products/new/page.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 109,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/products/new/page.tsx",
-                                lineNumber: 88,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -192,30 +194,30 @@ const NewProductPage = ()=>{
                                 children: "Cadastrar Produto"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/products/new/page.tsx",
-                                lineNumber: 100,
+                                lineNumber: 119,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/products/new/page.tsx",
-                        lineNumber: 51,
+                        lineNumber: 70,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/products/new/page.tsx",
-                lineNumber: 49,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ToastContainer"], {}, void 0, false, {
                 fileName: "[project]/src/app/products/new/page.tsx",
-                lineNumber: 109,
+                lineNumber: 128,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/products/new/page.tsx",
-        lineNumber: 48,
+        lineNumber: 67,
         columnNumber: 5
     }, this);
 };

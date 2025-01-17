@@ -2,10 +2,17 @@
 
 import React, { useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
+
+interface Product {
+  name: string;
+  quantity: string;
+  price: string;
+  category: string;
+}
 
 const NewProductPage = () => {
-  const [product, setProduct] = useState({
+  const [product, setProduct] = useState<Product>({
     name: "",
     quantity: "",
     price: "",
@@ -14,22 +21,25 @@ const NewProductPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
-    if (name === "quantity" || name === "price") {
-      const numericValue = value === "" ? "" : parseFloat(value).toString();
-      setProduct({ ...product, [name]: numericValue });
-    } else {
-      setProduct({ ...product, [name]: value });
-    }
+
+    setProduct({
+      ...product,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    saveToLocalStorage(product);
-    console.log("Produto cadastrado:", product);
-    toast.success("Produto cadastrado com sucesso!"); 
-    
-    // Limpando o formulário após o envio
+
+    const formattedProduct: Product = {
+      ...product,
+      quantity: parseInt(product.quantity, 10).toString(),
+      price: parseFloat(product.price).toFixed(2),
+    };
+
+    saveToLocalStorage(formattedProduct);
+    toast.success("Produto cadastrado com sucesso!");
+
     setProduct({
       name: "",
       quantity: "",
@@ -38,11 +48,20 @@ const NewProductPage = () => {
     });
   };
 
-  const saveToLocalStorage = (newProduct: typeof product) => {
-    const existingProducts = JSON.parse(localStorage.getItem("products") || "[]");
+  const saveToLocalStorage = (newProduct: Product) => {
+    const existingProducts: Product[] = (() => {
+      try {
+        const stored = localStorage.getItem("products");
+        return stored ? JSON.parse(stored) : [];
+      } catch {
+        return [];
+      }
+    })();
+
     existingProducts.push(newProduct);
     localStorage.setItem("products", JSON.stringify(existingProducts));
   };
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start p-6">

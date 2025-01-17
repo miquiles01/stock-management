@@ -2,5 +2,6 @@
   "/page": "app/page.js",
   "/home/page": "app/home/page.js",
   "/products/new/page": "app/products/new/page.js",
-  "/products/page": "app/products/page.js"
+  "/products/page": "app/products/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }
