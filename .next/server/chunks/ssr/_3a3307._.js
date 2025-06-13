@@ -89,7 +89,7 @@ const LoginPage = ()=>{
                                 type: "email",
                                 value: email,
                                 onChange: (e)=>setEmail(e.target.value),
-                                className: "w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent",
+                                className: "w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9CBFAF] focus:border-transparent",
                                 placeholder: "Digite seu email"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
@@ -117,7 +117,7 @@ const LoginPage = ()=>{
                                 type: "password",
                                 value: password,
                                 onChange: (e)=>setPassword(e.target.value),
-                                className: "w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent",
+                                className: "w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9CBFAF] focus:border-transparent",
                                 placeholder: "Digite sua senha"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
@@ -133,7 +133,7 @@ const LoginPage = ()=>{
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         type: "submit",
                         disabled: isLoading,
-                        className: `w-full py-2 rounded-lg font-bold transition-all ${isLoading ? 'bg-gray-400' : 'bg-[#E2725B] text-white hover:bg-[#C2614A]'}`,
+                        className: `w-full py-2 rounded-lg font-bold transition-all ${isLoading ? 'bg-gray-400' : 'bg-[#4C7562] text-white hover:bg-[#5F927B]'}`,
                         children: isLoading ? "Carregando..." : "Entrar"
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",

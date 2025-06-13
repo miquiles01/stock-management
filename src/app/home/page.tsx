@@ -39,14 +39,18 @@ const Dashboard = () => {
   const soldProducts = products.filter((product) => product.sold).length;
   const inStockProducts = products.filter((product) => product.quantity > 5).length;
 
+  const totalSoldValue = products
+  .filter((product) => product.sold && product.price)
+  .reduce((sum, product) => sum + parseFloat(String(product.price)), 0);
+
   const data = {
     labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
     datasets: [
       {
         label: "Vendas",
         data: [10, 20, 30, 25, 40, 50],
-        borderColor: "#FF6F00",
-        backgroundColor: "#FFCC80",
+        borderColor: "#65623D",
+        backgroundColor: "#65623D",
         fill: true,
         borderWidth: 2,
         tension: 0.4,
@@ -83,40 +87,43 @@ const Dashboard = () => {
     },
   };
 
-  const cardsData = [
-    {
-      title: "Produtos Cadastrados",
-      value: totalProducts,
-      icon: "fas fa-box",
-      bgColor: "#D9F9D6",
-      textColor: "#4C9644",
-    },
-    {
-      title: "Produtos em Baixa",
-      value: lowStockProducts,
-      icon: "fas fa-arrow-down",
-      bgColor: "#FFD9B3",
-      textColor: "#D7754C",
-    },
-    {
-      title: "Produtos Vendidos",
-      value: soldProducts,
-      icon: "fas fa-check-circle",
-      bgColor: "#FFEBCC",
-      textColor: "#FF6F00",
-    },
-    {
-      title: "Produtos em Estoque",
-      value: inStockProducts,
-      icon: "fas fa-warehouse",
-      bgColor: "#C2F0E5",
-      textColor: "#4C9B8C",
-    },
-  ];
+const cardsData = [
+  {
+    title: "Produtos Cadastrados",
+    value: totalProducts,
+    icon: "fas fa-box",
+    bgColor: "#65623D",
+    textColor: "#FFFFF",
+  },
+  {
+    title: "Total Vendido",
+    value: totalSoldValue.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }),
+    icon: "fas fa-money-bill-wave",
+    bgColor: "#838050",
+    textColor: "#FFFFF",
+  },
+  {
+    title: "Produtos Vendidos",
+    value: soldProducts,
+    icon: "fas fa-check-circle",
+    bgColor: "#9F9B61",
+    textColor: "#FFFFF",
+  },
+  {
+    title: "Produtos em Estoque",
+    value: inStockProducts,
+    icon: "fas fa-warehouse",
+    bgColor: "#BBB672",
+    textColor: "#FFFFF",
+  },
+];
 
   return (
     <div className="p-8 min-h-screen bg-gray-50">
-      <h1 className="text-3xl text-[#4C9644] font-semibold mb-6">Dashboard</h1>
+      <h1 className="text-3xl text-[#234937] font-semibold mt-16 mb-6">Análise de Vendas e Estoque</h1>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -140,7 +147,7 @@ const Dashboard = () => {
 
       {/* Gráfico */}
       <div className="bg-white shadow-xl rounded-lg p-6 mt-8">
-        <h2 className="text-2xl text-[#4C9644] font-semibold mb-6">Gráfico de Vendas - Relatório Mensal</h2>
+        <h2 className="text-2xl text-[#234937] font-semibold mb-6">Gráfico de Vendas - Relatório Mensal</h2>
         <Line data={data} options={options} />
       </div>
     </div>

@@ -51,26 +51,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 ;
 function Navbar() {
     const [menuOpen, setMenuOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isClient, setIsClient] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
+    // Garante que só renderiza no cliente
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setIsClient(true);
+    }, []);
     const noNavbarRoutes = [
         "/login"
     ];
-    if (noNavbarRoutes.includes(pathname)) {
+    if (!isClient || noNavbarRoutes.includes(pathname)) {
         return null;
     }
-    const toggleMenu = ()=>setMenuOpen(!menuOpen);
+    const toggleMenu = ()=>{
+        console.log("Menu toggled");
+        setMenuOpen(!menuOpen);
+    };
     const closeMenu = ()=>setMenuOpen(false);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                className: "bg-[#4C9644] text-white p-4 h-16 flex items-center justify-between shadow-lg fixed top-0 left-0 w-full z-50",
+                className: "bg-[#2A332F] text-white px-6 py-4 h-16 flex items-center justify-between shadow-lg fixed top-0 left-0 w-full z-50",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-xl font-bold",
-                        children: "Sistema de Estoque"
+                        children: "Anne Brink Feltro"
                     }, void 0, false, {
                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                        lineNumber: 23,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -90,17 +98,17 @@ function Navbar() {
                                 d: "M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                                lineNumber: 39,
+                                lineNumber: 48,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 31,
+                            lineNumber: 40,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                        lineNumber: 26,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -112,85 +120,85 @@ function Navbar() {
                                     className: "relative group",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/home",
-                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#26331D] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
+                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#9CBFAF] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                                        lineNumber: 51,
+                                        lineNumber: 60,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/navbar/navbar.tsx",
-                                    lineNumber: 50,
+                                    lineNumber: 59,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     className: "relative group",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/products/new/",
-                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#26331D] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
+                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#9CBFAF] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
                                         children: "Cadastrar Produto"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                                        lineNumber: 59,
+                                        lineNumber: 68,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/navbar/navbar.tsx",
-                                    lineNumber: 58,
+                                    lineNumber: 67,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     className: "relative group",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/products",
-                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#26331D] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
+                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#9CBFAF] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
                                         children: "Listagem"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 76,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/navbar/navbar.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                     className: "relative group",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/",
-                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#26331D] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
+                                        className: "relative text-white text-lg font-medium py-2 transition-all duration-300 ease-in-out before:absolute before:w-0 before:h-1 before:bg-[#9CBFAF] before:bottom-0 before:left-0 before:transition-all before:duration-300 group-hover:before:w-full",
                                         children: "Sair"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                                        lineNumber: 75,
+                                        lineNumber: 84,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/navbar/navbar.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 83,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 49,
+                            lineNumber: 58,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/navbar/navbar.tsx",
-                        lineNumber: 48,
+                        lineNumber: 57,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                lineNumber: 22,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: `fixed top-16 right-0 h-full bg-[#4C9644] text-white w-64 transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"} z-40 lg:hidden`,
+                className: `fixed top-16 right-0 h-full bg-[#4C9644] text-white w-64 transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"} z-50 lg:hidden`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                     className: "flex flex-col gap-6 p-6",
                     children: [
@@ -201,12 +209,12 @@ function Navbar() {
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                                lineNumber: 94,
+                                lineNumber: 103,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 93,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -216,12 +224,12 @@ function Navbar() {
                                 children: "Cadastrar Produto"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                                lineNumber: 99,
+                                lineNumber: 108,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 98,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -231,12 +239,12 @@ function Navbar() {
                                 children: "Listagem"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                                lineNumber: 104,
+                                lineNumber: 113,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 103,
+                            lineNumber: 112,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -246,31 +254,31 @@ function Navbar() {
                                 children: "Sair"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                                lineNumber: 109,
+                                lineNumber: 118,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/navbar/navbar.tsx",
-                            lineNumber: 108,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/navbar/navbar.tsx",
-                    lineNumber: 92,
+                    lineNumber: 101,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                lineNumber: 87,
+                lineNumber: 96,
                 columnNumber: 7
             }, this),
             menuOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden",
+                className: "fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
                 onClick: closeMenu
             }, void 0, false, {
                 fileName: "[project]/src/app/navbar/navbar.tsx",
-                lineNumber: 117,
+                lineNumber: 127,
                 columnNumber: 9
             }, this)
         ]
@@ -289,7 +297,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const Footer = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-        className: "bg-[#26331D] text-white py-4",
+        className: "bg-[#282D33] text-white py-4 p-4",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "container mx-auto px-4 flex flex-col md:flex-row justify-between items-center",
             children: [
@@ -300,7 +308,7 @@ const Footer = ()=>{
                         children: [
                             "© ",
                             new Date().getFullYear(),
-                            " Mini Boi. Todos os direitos reservados."
+                            " Viviane. Todos os direitos reservados."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/footer/page.tsx",

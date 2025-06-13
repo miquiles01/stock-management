@@ -31,6 +31,7 @@ const Dashboard = ()=>{
     const lowStockProducts = products.filter((product)=>product.quantity <= 5).length;
     const soldProducts = products.filter((product)=>product.sold).length;
     const inStockProducts = products.filter((product)=>product.quantity > 5).length;
+    const totalSoldValue = products.filter((product)=>product.sold && product.price).reduce((sum, product)=>sum + parseFloat(String(product.price)), 0);
     const data = {
         labels: [
             "Jan",
@@ -51,8 +52,8 @@ const Dashboard = ()=>{
                     40,
                     50
                 ],
-                borderColor: "#FF6F00",
-                backgroundColor: "#FFCC80",
+                borderColor: "#65623D",
+                backgroundColor: "#65623D",
                 fill: true,
                 borderWidth: 2,
                 tension: 0.4,
@@ -92,40 +93,43 @@ const Dashboard = ()=>{
             title: "Produtos Cadastrados",
             value: totalProducts,
             icon: "fas fa-box",
-            bgColor: "#D9F9D6",
-            textColor: "#4C9644"
+            bgColor: "#65623D",
+            textColor: "#FFFFF"
         },
         {
-            title: "Produtos em Baixa",
-            value: lowStockProducts,
-            icon: "fas fa-arrow-down",
-            bgColor: "#FFD9B3",
-            textColor: "#D7754C"
+            title: "Total Vendido",
+            value: totalSoldValue.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }),
+            icon: "fas fa-money-bill-wave",
+            bgColor: "#838050",
+            textColor: "#FFFFF"
         },
         {
             title: "Produtos Vendidos",
             value: soldProducts,
             icon: "fas fa-check-circle",
-            bgColor: "#FFEBCC",
-            textColor: "#FF6F00"
+            bgColor: "#9F9B61",
+            textColor: "#FFFFF"
         },
         {
             title: "Produtos em Estoque",
             value: inStockProducts,
             icon: "fas fa-warehouse",
-            bgColor: "#C2F0E5",
-            textColor: "#4C9B8C"
+            bgColor: "#BBB672",
+            textColor: "#FFFFF"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-8 min-h-screen bg-gray-50",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-3xl text-[#4C9644] font-semibold mb-6",
-                children: "Dashboard"
+                className: "text-3xl text-[#234937] font-semibold mt-16 mb-6",
+                children: "Análise de Vendas e Estoque"
             }, void 0, false, {
                 fileName: "[project]/src/app/home/page.tsx",
-                lineNumber: 119,
+                lineNumber: 126,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -143,12 +147,12 @@ const Dashboard = ()=>{
                                     className: card.icon
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/home/page.tsx",
-                                    lineNumber: 133,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/home/page.tsx",
-                                lineNumber: 132,
+                                lineNumber: 139,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -156,7 +160,7 @@ const Dashboard = ()=>{
                                 children: card.title
                             }, void 0, false, {
                                 fileName: "[project]/src/app/home/page.tsx",
-                                lineNumber: 135,
+                                lineNumber: 142,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -164,29 +168,29 @@ const Dashboard = ()=>{
                                 children: card.value
                             }, void 0, false, {
                                 fileName: "[project]/src/app/home/page.tsx",
-                                lineNumber: 136,
+                                lineNumber: 143,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, index, true, {
                         fileName: "[project]/src/app/home/page.tsx",
-                        lineNumber: 124,
+                        lineNumber: 131,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/home/page.tsx",
-                lineNumber: 122,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white shadow-xl rounded-lg p-6 mt-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        className: "text-2xl text-[#4C9644] font-semibold mb-6",
+                        className: "text-2xl text-[#234937] font-semibold mb-6",
                         children: "Gráfico de Vendas - Relatório Mensal"
                     }, void 0, false, {
                         fileName: "[project]/src/app/home/page.tsx",
-                        lineNumber: 143,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Line"], {
@@ -194,19 +198,19 @@ const Dashboard = ()=>{
                         options: options
                     }, void 0, false, {
                         fileName: "[project]/src/app/home/page.tsx",
-                        lineNumber: 144,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/home/page.tsx",
-                lineNumber: 142,
+                lineNumber: 149,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/home/page.tsx",
-        lineNumber: 118,
+        lineNumber: 125,
         columnNumber: 5
     }, this);
 };

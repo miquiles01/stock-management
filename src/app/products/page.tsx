@@ -8,6 +8,8 @@ interface Product {
   quantity: number;
   price: number;
   category: string;
+  sold?: boolean;
+  soldAt?: string[];
 }
 
 const ProductListPage = () => {
@@ -34,10 +36,28 @@ const ProductListPage = () => {
     }
   };
 
+  const marcarUnidadeComoVendida = (index: number) => {
+    const atualizados = [...products];
+    const produto = atualizados[index];
+
+    if (produto.quantity > 0) {
+      produto.quantity -= 1;
+      if (!produto.soldAt) produto.soldAt = [];
+      produto.soldAt.push(new Date().toISOString().split("T")[0]);
+
+      if (produto.quantity === 0) {
+        produto.sold = true;
+      }
+
+      setProducts(atualizados);
+      localStorage.setItem("products", JSON.stringify(atualizados));
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start p-6">
-      <div className="w-full max-w-4xl bg-white p-8 rounded-xl shadow-lg mt-20">
-        <h1 className="text-3xl font-bold text-center text-[#E07A5F] mb-6">
+      <div className="w-full max-w-5xl bg-white p-8 rounded-xl shadow-lg mt-20">
+        <h1 className="text-3xl font-bold text-center text-[#48754B] mb-6">
           Listagem de Produtos
         </h1>
 
@@ -48,30 +68,48 @@ const ProductListPage = () => {
             <table className="w-full table-auto border-collapse text-[#966850]">
               <thead>
                 <tr>
-                  <th className="px-4 py-2 border-b text-left">Nome</th>
-                  <th className="px-4 py-2 border-b text-left">Quantidade</th>
-                  <th className="px-4 py-2 border-b text-left">Preço</th>
-                  <th className="px-4 py-2 border-b text-left">Categoria</th>
-                  <th className="px-4 py-2 border-b text-left">Ações</th>
+                  <th className="px-4 py-2 border-b text-center">Produto</th>
+                  <th className="px-4 py-2 border-b text-center">Quantidade</th>
+                  <th className="px-4 py-2 border-b text-center">Preço</th>
+                  <th className="px-4 py-2 border-b text-center">Categoria</th>
+                  <th className="px-4 py-2 border-b text-center">Vendas</th>
+                  <th className="px-4 py-2 border-b text-center">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((product, index) => (
-                  <tr key={index}>
+                  <tr key={index} className="text-center">
                     <td className="px-4 py-2 border-b">{product.name}</td>
                     <td className="px-4 py-2 border-b">{product.quantity}</td>
-                    <td className="px-4 py-2 border-b">{product.price}</td>
+                    <td className="px-4 py-2 border-b">
+                      {product.price.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </td>
                     <td className="px-4 py-2 border-b">{product.category}</td>
+                    <td className="px-4 py-2 border-b">
+                      {product.quantity > 0 ? (
+                        <button
+                          onClick={() => marcarUnidadeComoVendida(index)}
+                          className="px-3 py-1 bg-green-700 text-white rounded hover:bg-green-600"
+                        >
+                          Marcar como vendido
+                        </button>
+                      ) : (
+                        <span className="text-green-600 font-semibold">Esgotado</span>
+                      )}
+                    </td>
                     <td className="px-4 py-2 border-b">
                       <button
                         onClick={() => handleEdit(index)}
-                        className="px-3 py-1 bg-yellow-500 text-white rounded-lg mr-2 hover:bg-yellow-400 transition-all text-sm sm:text-base"
+                        className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-400 transition-all text-sm mr-2"
                       >
                         Editar
                       </button>
                       <button
                         onClick={() => handleRemove(index)}
-                        className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-400 transition-all text-sm sm:text-base"
+                        className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-400 transition-all text-sm"
                       >
                         Remover
                       </button>

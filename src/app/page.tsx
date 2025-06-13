@@ -67,7 +67,7 @@ const LoginPage: React.FC = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent"
+            className="w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9CBFAF] focus:border-transparent"
             placeholder="Digite seu email"
           />
         </div>
@@ -80,7 +80,7 @@ const LoginPage: React.FC = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E2725B] focus:border-transparent"
+            className="w-full px-4 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9CBFAF] focus:border-transparent"
             placeholder="Digite sua senha"
           />
         </div>
@@ -88,7 +88,7 @@ const LoginPage: React.FC = () => {
         <button
           type="submit"
           disabled={isLoading} 
-          className={`w-full py-2 rounded-lg font-bold transition-all ${isLoading ? 'bg-gray-400' : 'bg-[#E2725B] text-white hover:bg-[#C2614A]'}`}
+          className={`w-full py-2 rounded-lg font-bold transition-all ${isLoading ? 'bg-gray-400' : 'bg-[#4C7562] text-white hover:bg-[#5F927B]'}`}
         >
           {isLoading ? "Carregando..." : "Entrar"}
         </button>
